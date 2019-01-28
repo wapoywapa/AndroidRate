@@ -96,16 +96,16 @@ class DialogOptions internal constructor() {
     var iconResId: Int = 0
 
     /** The Rate Dialog message text resource ID. */
-    var messageTextResId: Int = R.string.rate_dialog_message
+    var messageTextResId: Int = R.string.rater_message
 
     /** The Rate Dialog negative text resource ID. */
-    var negativeTextResId: Int = R.string.rate_dialog_no
+    var negativeTextResId: Int = R.string.rater_never
 
     /** The Rate Dialog neutral text resource ID. */
-    var neutralTextResId: Int = R.string.rate_dialog_cancel
+    var neutralTextResId: Int = R.string.rater_not_now
 
     /** The Rate Dialog positive text resource ID. */
-    var positiveTextResId: Int = R.string.rate_dialog_ok
+    var positiveTextResId: Int = R.string.rater_rate_now
 
     /** The Rate Dialog theme resource ID. */
     var themeResId: Int? = null
@@ -116,7 +116,7 @@ class DialogOptions internal constructor() {
         }
 
     /** The Rate Dialog title text resource ID. */
-    var titleTextResId: Int = R.string.rate_dialog_title
+    var titleTextResId: Int = R.string.rater_title
 
     /** The Rate Dialog type. One of the values defined by [DialogType.AnyDialogType]. */
     @DialogType.AnyDialogType

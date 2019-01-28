@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 .setTitle(R.string.rater_title)
                 .setTextLater(R.string.rater_not_now)
                 .setTextNever(R.string.rater_never)
-                .setTextRateNow(R.string.rater_ok)
+                .setTextRateNow(R.string.rater_rate_now)
                 .setMessage(R.string.rater_message)
                 .monitor();
 

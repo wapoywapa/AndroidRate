@@ -7,10 +7,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" tools:ignore="MissingTranslation">AndroidRate Sample</string>
     <string name="hello_world" tools:ignore="MissingTranslation">Hello world!</string>
-
-    <string name="rater_title">Rate this app</string>
-    <string name="rater_message">If you enjoy the app then please leave us a rating, it will only take a minute at most. Thanks for your support!</string>
-    <string name="rater_ok">Rate now</string>
-    <string name="rater_not_now">Not now</string>
-    <string name="rater_never">Never</string>
 </resources>
