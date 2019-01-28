@@ -162,7 +162,7 @@ public class DefaultDialogManager implements DialogManager {
         public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
             final View view = ratingBar.getRootView();
             final View layoutRatingBar = view.findViewById(R.id.rate_dialog_layout_rating_bar);
-            final View buttonNeutral = view.findViewById(R.id.rate_dialog_button_neutral);
+            final Button buttonNeutral = view.findViewById(R.id.rate_dialog_button_neutral);
             final View buttonNegative = view.findViewById(R.id.rate_dialog_button_negative);
             final View buttonPositive = view.findViewById(R.id.rate_dialog_button_positive);
             final boolean showNeutralButton = dialogOptions.isShowNeutralButton() &&
@@ -175,40 +175,48 @@ public class DefaultDialogManager implements DialogManager {
                 dialogOptions.setCurrentRating((byte) rating);
             }
 
-            if (!showNegativeButton && showPositiveButton) {
-                buttonPositive
-                            .setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_bottom);
-                buttonPositive.setVisibility(VISIBLE);
-            } else if (showNegativeButton && !showPositiveButton) {
-                buttonNegative
-                            .setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_bottom);
-                buttonNegative.setVisibility(VISIBLE);
-            } else if (showNegativeButton) {
-                buttonNegative.setVisibility(VISIBLE);
-                buttonPositive.setVisibility(VISIBLE);
-            }
-            if (showNeutralButton) {
-                buttonNeutral.setVisibility(GONE);
-            }
+            if (rating <= 3) {
+                if (showNeutralButton && showNegativeButton && showPositiveButton) {
+                    buttonNeutral.setText(R.string.rater_ok);
+                    buttonNeutral.setVisibility(View.VISIBLE);
+                    buttonNegative.setVisibility(GONE);
+                    buttonPositive.setVisibility(GONE);
+                }
+            } else {
 
-            if (layoutRatingBar != null) {
-                if ((dialogOptions.isShowIcon() &&
-                     (view.findViewById(R.id.rate_dialog_icon) != null)) ||
-                    (dialogOptions.isShowTitle() &&
-                     (view.findViewById(R.id.rate_dialog_text_dialog_title) != null)) ||
-                    (dialogOptions.isShowMessage() &&
-                     (view.findViewById(R.id.rate_dialog_text_dialog_message) != null))) {
-                    if (showNeutralButton && !(showNegativeButton || showPositiveButton)) {
-                        layoutRatingBar
-                            .setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_bottom);
+                if (!showNegativeButton && showPositiveButton) {
+                    buttonPositive.setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_bottom);
+                    buttonPositive.setVisibility(VISIBLE);
+                } else if (showNegativeButton && !showPositiveButton) {
+                    buttonNegative.setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_bottom);
+                    buttonNegative.setVisibility(VISIBLE);
+                } else if (showNegativeButton) {
+                    buttonNegative.setVisibility(VISIBLE);
+                    buttonPositive.setVisibility(VISIBLE);
+                }
+                if (showNeutralButton) {
+                    buttonNeutral.setVisibility(GONE);
+                }
+
+                if (layoutRatingBar != null) {
+                    if ((dialogOptions.isShowIcon() &&
+                            (view.findViewById(R.id.rate_dialog_icon) != null)) ||
+                            (dialogOptions.isShowTitle() &&
+                                    (view.findViewById(R.id.rate_dialog_text_dialog_title) != null)) ||
+                            (dialogOptions.isShowMessage() &&
+                                    (view.findViewById(R.id.rate_dialog_text_dialog_message) != null))) {
+                        if (showNeutralButton && !(showNegativeButton || showPositiveButton)) {
+                            layoutRatingBar
+                                    .setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_bottom);
+                        } else if (!showNeutralButton && (showNegativeButton || showPositiveButton)) {
+                            layoutRatingBar.setBackgroundResource(R.color.rateDialogColorBackground);
+                        }
                     } else if (!showNeutralButton && (showNegativeButton || showPositiveButton)) {
-                        layoutRatingBar.setBackgroundResource(R.color.rateDialogColorBackground);
+                        layoutRatingBar
+                                .setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_top);
+                    } else if (showNeutralButton && !(showNegativeButton || showPositiveButton)) {
+                        layoutRatingBar.setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded);
                     }
-                } else if (!showNeutralButton && (showNegativeButton || showPositiveButton)) {
-                    layoutRatingBar
-                            .setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded_top);
-                } else if (showNeutralButton && !(showNegativeButton || showPositiveButton)) {
-                    layoutRatingBar.setBackgroundResource(R.drawable.rate_dialog_rectangle_rounded);
                 }
             }
         }

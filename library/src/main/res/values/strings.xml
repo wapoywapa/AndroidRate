@@ -7,6 +7,7 @@
 <resources>
 
     <!-- Default language strings. -->
+    <string name="rater_ok">OK</string>
     <string name="rate_dialog_title">@string/rate_dialog_title_en</string>
     <string name="rate_dialog_message">@string/rate_dialog_message_en</string>
     <string name="rate_dialog_ok">@string/rate_dialog_ok_en</string>

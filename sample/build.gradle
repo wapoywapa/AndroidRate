@@ -9,10 +9,7 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config {
-            storeFile file(System.getenv('STOREFILE'))
-            storePassword System.getenv('STOREPWD')
-            keyAlias 'Vorlonsoft LLC'
-            keyPassword System.getenv('KEYPWD')
+
         }
     }
     compileSdkVersion 28

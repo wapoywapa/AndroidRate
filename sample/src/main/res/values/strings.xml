@@ -8,9 +8,9 @@
     <string name="app_name" tools:ignore="MissingTranslation">AndroidRate Sample</string>
     <string name="hello_world" tools:ignore="MissingTranslation">Hello world!</string>
 
-    <string name="new_rate_dialog_title" tools:ignore="MissingTranslation">Rate Me!</string>
-    <string name="new_rate_dialog_message" tools:ignore="MissingTranslation" tools:keep="@string/new_rate_dialog_message">If you enjoy playing this app, would you mind taking a moment to rate it? It won\'t take more than a minute. Thanks for your support!</string>
-    <string name="new_rate_dialog_never" tools:ignore="MissingTranslation">Never</string>
-    <string name="new_rate_dialog_later" tools:ignore="MissingTranslation">Later</string>
-    <string name="new_rate_dialog_ok" tools:ignore="MissingTranslation">Rate</string>
+    <string name="rater_title">Rate this app</string>
+    <string name="rater_message">If you enjoy the app then please leave us a rating, it will only take a minute at most. Thanks for your support!</string>
+    <string name="rater_ok">Rate now</string>
+    <string name="rater_not_now">Not now</string>
+    <string name="rater_never">Never</string>
 </resources>

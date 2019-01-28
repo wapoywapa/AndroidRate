@@ -19,6 +19,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.vorlonsoft.android.rate.AppCompatDialogManager;
 import com.vorlonsoft.android.rate.AppRate;
 import com.vorlonsoft.android.rate.DialogManager;
+import com.vorlonsoft.android.rate.DialogType;
 import com.vorlonsoft.android.rate.StoreType;
 import com.vorlonsoft.android.rate.Time;
 
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         @SuppressWarnings("unused") DialogManager.Factory appCompatDialogManagerFactory = new AppCompatDialogManager.Factory();
 
         AppRate.with(this)
+                .setShowDialogIcon(true)
+                .setDialogType(DialogType.MODERN)
                 .setStoreType(StoreType.GOOGLEPLAY) /* default is GOOGLEPLAY (Google Play), other options are AMAZON (Amazon Appstore), BAZAAR (Cafe Bazaar),
                                                      *         CHINESESTORES (19 chinese app stores), MI (Mi Appstore (Xiaomi Market)), SAMSUNG (Samsung Galaxy Apps),
                                                      *         SLIDEME (SlideME Marketplace), TENCENT (Tencent App Store), YANDEX (Yandex.Store),
@@ -82,19 +85,12 @@ public class MainActivity extends AppCompatActivity {
                 .setDebug(true)                     // default is false, true is for development only, true ensures that the Rate Dialog will be shown each time the app is launched
                 .setCancelable(false)               // default false.
                 .setOnClickButtonListener(which -> Log.d(TAG, "RateButton: " + Byte.toString(which)))
-                /* uncomment to test AppCompatDialogManager instead DefaultDialogManager */
-                //.setDialogManagerFactory(appCompatDialogManagerFactory)
-                /* comment to use library strings instead app strings - start */
-                .setTitle(R.string.new_rate_dialog_title)
-                .setTextLater(R.string.new_rate_dialog_later)
-                /* comment to use library strings instead app strings - end */
-                /* uncomment to use app string instead library string */
-                //.setMessage(R.string.new_rate_dialog_message)
-                /* comment to use library strings instead app strings - start */
-                .setTextNever(R.string.new_rate_dialog_never)
-                .setTextRateNow(R.string.new_rate_dialog_ok)
-                /* comment to use library strings instead app strings - end */
-                .monitor();                         // Monitors the app launch times
+                .setTitle(R.string.rater_title)
+                .setTextLater(R.string.rater_not_now)
+                .setTextNever(R.string.rater_never)
+                .setTextRateNow(R.string.rater_ok)
+                .setMessage(R.string.rater_message)
+                .monitor();
 
         if (AppRate.with(this).getStoreType() == StoreType.GOOGLEPLAY) { // Checks that current app store type from library options is StoreType.GOOGLEPLAY
             if (GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this) != ConnectionResult.SERVICE_MISSING) { // Checks that Google Play is available
